@@ -1,3 +1,265 @@
+# Mobile Shop POS Backend API
+
+Backend API for a **Mobile Shop Point of Sale (POS) System** designed to manage inventory, sales, stock movements, and financial reports for mobile phone and accessories shops.
+
+This backend is built using **Laravel** and provides a scalable **multi-tenant architecture** that supports multiple shops while keeping each shop’s data isolated.
+
+---
+
+# Project Overview
+
+Mobile phone accessory shops manage a large variety of products such as:
+
+* Mobile covers (brand + model specific)
+* Chargers
+* Cables
+* Earphones
+* Other accessories
+
+Managing inventory manually becomes difficult due to:
+
+* Many brands
+* Multiple phone models
+* Different buying and selling prices
+* Frequent stock changes
+
+This backend provides a structured system to manage all shop operations through a secure REST API.
+
+---
+
+# Key Features
+
+### Multi-Shop Support (Multi-Tenant Architecture)
+
+The system supports **multiple shops using the same platform**.
+
+Each shop’s data is isolated using a `shop_id` field across all business tables.
+
+Features include:
+
+* Secure shop-level data isolation
+* Independent inventory for each shop
+* Independent sales reports
+* Independent expense tracking
+
+---
+
+### Inventory Management
+
+The API manages inventory using the hierarchy:
+
+Category → Brand → Model → Product
+
+Example structure:
+
+Cover → Samsung → S21 → Silicon Cover
+
+Features:
+
+* Create and manage categories
+* Manage mobile brands
+* Manage phone models
+* Add products with cost and selling prices
+* Track product quantities
+* Stock movement tracking
+* Low stock monitoring
+
+---
+
+### Sales Management
+
+The system allows efficient sales processing.
+
+Features include:
+
+* Create new sales
+* Multiple products per sale
+* Automatic profit calculation
+* Payment methods support:
+
+  * Cash
+  * Card
+  * QR payment
+* Automatic stock deduction after sale
+
+---
+
+### Financial Tracking
+
+The system automatically calculates important financial metrics:
+
+* Total sales revenue
+* Product-level profit
+* Daily profit
+* Monthly profit
+* Expense tracking
+* Net business profit
+
+Profit calculation formula:
+
+Profit = Selling Price − Cost Price
+
+---
+
+### Expense Management
+
+Shop owners can track operational expenses.
+
+Supported expense types:
+
+* Rent
+* Electricity
+* Salary
+* Internet
+* Other expenses
+
+Expenses are used to calculate **net profit**.
+
+---
+
+### Stock Movement Tracking
+
+All stock changes are recorded in a **stock history table**.
+
+Stock changes occur when:
+
+* New inventory is added
+* Products are sold
+* Items are returned
+* Manual adjustments are made
+
+This provides full inventory traceability.
+
+---
+
+# Technology Stack
+
+Backend Framework:
+
+* Laravel
+
+Database:
+
+* MySQL
+
+API Type:
+
+* RESTful API
+
+Authentication:
+
+* Laravel authentication system
+
+---
+
+# Database Structure
+
+Main tables used in the system:
+
+* shops
+* users
+* categories
+* brands
+* models
+* products
+* stock
+* sales
+* sale_items
+* expenses
+
+Each table includes a **shop_id** column to ensure shop-level data isolation.
+
+---
+
+# API Modules
+
+The backend API is organized into the following modules:
+
+Authentication
+
+* User login
+* User roles (Owner / Cashier)
+
+Inventory
+
+* Categories
+* Brands
+* Models
+* Products
+* Stock management
+
+Sales
+
+* Create sales
+* Manage sale items
+* Calculate profit
+
+Reports
+
+* Sales reports
+* Profit reports
+* Stock reports
+
+Expenses
+
+* Expense creation
+* Expense listing
+* Expense reports
+
+---
+
+# User Roles
+
+### Owner
+
+Full system access:
+
+* Inventory management
+* Sales reports
+* Profit analytics
+* Expense tracking
+* User management
+
+### Cashier
+
+Limited access:
+
+* Create sales
+* View product inventory
+* Cannot view cost prices
+* Cannot manage expenses
+
+---
+
+# Future Improvements
+
+Planned enhancements include:
+
+* Barcode scanning support
+* Receipt printing
+* Supplier management
+* Advanced analytics dashboards
+* Offline-first sync support
+* Cloud backup system
+
+---
+
+# Author
+
+Inas Nuzeer
+
+Software Engineering Graduate
+Mobile & Web Application Developer
+
+---
+
+# Note
+
+This repository represents the **backend architecture of the POS system**.
+
+Some production details may be omitted for security or client confidentiality.
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
